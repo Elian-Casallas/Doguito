@@ -13,7 +13,7 @@ const ListPosts = ({ url }) => {
         <section className="posts container">
             {
                 posts.map( post => {
-                    const {id, title, metadescription, body, categoria} = post;
+                    const {id, title, metadescription, categoria} = post;
                     return <Link to={`/posts/${id}`} className={`post__card post-card--${categoria}`} key={id}>
                         <article >
                             <h3 className="post-card__title">
