@@ -1,14 +1,18 @@
 import "../assets/css/componentes/card.css"
 import { useState, useEffect } from "react"
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router-dom";
 import {buscar} from "../api/api"
 
 const Post = ({url}) => {
     const [post, actualizarPost] = useState({});
 
+    const navigete = useNavigate();
+
     const {id} = useParams();
     useEffect( () => {
-        buscar(`/posts/${id}`, actualizarPost)
+        buscar(`/posts/${id}`, actualizarPost).catch(() => {
+            navigete("/no-existe");
+        })
     }, [id])
  return(
    <main className = "container flex flex--center">
